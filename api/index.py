@@ -11,7 +11,12 @@ load_dotenv()
 print(f"API Key: {os.getenv('API_KEY')}")
 
 # Initialize the Flask application
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, 
+            template_folder='../templates',
+            static_folder='../static')
+
+# Add this line at the end
+app = app.wsgi_app
 
 # Get the OpenWeatherMap API key from environment variables
 api_key = os.getenv('API_KEY')
